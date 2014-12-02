@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WoW Database Project</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="project.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
+
+
+  <body>
+	<header id="navbar">
+		<form method="get" action="login.html">
+			<button type="submit" class="btn btn-success" type="button" id="loginButton">Login</button>
+		</form>
+		<div class="col-md-6 col-md-offset-3" id="simpleSearchBar">
+			<form action="simple.php" method="get">
+				<div class="input-group">
+					<input type="text" class="form-control" id="simpleTextField" placeholder="Simple text search">
+					<span class="input-group-btn">
+						<button class="btn btn-success" id="simpleTextButton" type="button">Search</button>
+					</span>
+				</div>
+			</form>
+		</div>
+	</header>
+	  
+	<div class="col-md-6 col-md-offset-3" id="titleImageContainer">
+		<img class="img-responsive" src="http://variantavatar.com/wp-content/uploads/2011/08/WOW_AH.png"/>
+		<h2>WoW Auction House Database</h2>
+	</div>
+	
+	<!--=====================================================-->
+	<!--                 ALL SEARCH OPTIONS                  -->
+	<!--=====================================================-->
+	<div class="col-md-10 col-md-offset-1" id="mainSearchOptions">
+		<p>Welcome to our WoW Auction House database! To do a simple search, use the bar at the top of the page. To do an advanced search,
+			select information about the data you want below and click Search! You can also select a pre-made query from the "Special
+			Categories" section.</p>
+		<br>
+
+
+		<!--=====================================================-->
+		<!--                 SPECIAL CATEGORIES                  -->
+		<!--=====================================================-->
+		<form action="premade.php" method="get">
+			<div class="col-xs-12" id="specialCategories">
+				<h3>Special Categories</h3>
+				<hr>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="low_prices">Unusually Low Prices</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="high_prices">Unusually High Prices</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="rare_items">Rare Items</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="common_items">Common Items</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="high_volume">Unusually High Volumes</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="low_volume">Unusually Low Volumes</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="newest_items">Newest Items</button>
+				</div>
+				<div class="col-md-3 buttonContainer">
+					<button class="btn btn-info btn-block" type="submit" name="spec_cat" value="oldest_items">Oldest Items</button>
+				</div>
+			</div>
+		</form><!-- END SPECIAL CATEGORIES -->
+
+
+		<!--=====================================================-->
+		<!--                   ADVANCED SEARCH                   -->
+		<!--=====================================================-->
+		<div class="col-xs-12" id="advancedSearch">
+			<h3>Advanced Search</h3>
+			<hr><br>
+			<button class="btn btn-warning btn-block" onclick="setDefaultOptions()">Set Options to Default</button>
+
+			<!-- COLUMN 1 of 4 -->
+			<div class="col-md-3 advancedSearchOption">
+				<!-- PURCHASING OPTIONS -->
+				<div class="col-xs-12">
+					<div class="innerOptionHeader">
+						<h3>Purchasing Options [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<div class="radio">
+							<label><input name="purchaseRadio" type="radio" checked>Auction and Buy Out</input></label>
+							<label><input name="purchaseRadio" type="radio">Auction Only</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- ITEM TYPES -->
+				<div class="col-xs-12">
+					<div class="innerOptionHeader">
+						<h3>Item Types [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<div class="radio" id="itemTypeSelection">
+							<label><input name="itemTypeRadio" name="itemTypeRadio" type="radio" id="allItemTypesOption" checked>ALL TYPES</input></label>
+							<label><input name="itemTypeRadio" type="radio">Weapon</input></label>
+							<label><input name="itemTypeRadio" type="radio">Armor</input></label>
+							<label><input name="itemTypeRadio" type="radio">Consumable</input></label>
+							<label><input name="itemTypeRadio" type="radio">Container</input></label>
+							<label><input name="itemTypeRadio" type="radio">Gem</input></label>
+							<label><input name="itemTypeRadio" type="radio">Glyph</input></label>
+							<label><input name="itemTypeRadio" type="radio">Recipe</input></label>
+							<label><input name="itemTypeRadio" type="radio">Trade Good</input></label>
+							<label><input name="itemTypeRadio" type="radio">Battle Pet</input></label>
+							<label><input name="itemTypeRadio" type="radio">Misc</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- TEXT SEARCH -->
+				<div class="col-xs-12">
+					<div class="innerOptionHeader">
+						<h3>Text Search [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<br>
+						<input type="text" class="form-control" placeholder="Item Name"></input>
+						<br>
+						<input type="text" class="form-control" placeholder="Owner Name"></input>
+						<br>
+					</div>
+				</div>
+			</div> <!-- END COLUMN 1 of 4-->
+			
+			<!-- COLUMNS 2&3 of 4 -->
+			<div class="col-md-6 advancedSearchOption">
+				<!-- PRICING RANGE -->
+				<div class="col-xs-12">
+					<div class="innerOptionHeader">
+						<h3>Pricing Range [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<p>Enter monetary values as XgYsZc, where X=amount of gold, Y=amount of silver, and Z=amount of copper. </p>
+						<p>Example: 10 gold, 20 silver, and 5 copper is 10g20s5c. 44 gold and 3 copper would be 44g0s3c.</p>
+						<form class="form-inline" role="form">	<!-- POTENTIALLY USELESS FORM -->
+							<label class="sr-only" for="">Min Price</label>
+							<input id="priceRangeMin" type="text" class="form-control inputField" placeholder="Min Price" value="0g0s1c"></input>&nbsp;-
+							<label class="sr-only" for="">Max Price</label>
+							<input id="priceRangeMax" type="text" class="form-control" placeholder="Max Price" value="9999999g0s0c"></input>
+						</form>
+						<br>
+					</div>
+				</div>
+				<!-- ITEM QUALITY(IES) -->
+				<div class="col-xs-6">
+					<div class="innerOptionHeader">
+						<h3>Item Qualities [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL QUALITIES</input></label>
+							<label class="poor"><input type="checkbox">Poor</input></label>
+							<label><input type="checkbox">Common</input></label>
+							<label class="uncommon"><input type="checkbox">Uncommon</input></label>
+							<label class="rare"><input type="checkbox">Rare</input></label>
+							<label class="epic"><input type="checkbox">Epic</input></label>
+							<label class="legendary"><input type="checkbox">Legendary</input></label>
+							<label class="artifact"><input type="checkbox">Artifact</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- LEVEL RANGES -->
+				<div class="col-xs-6">
+					<div class="innerOptionHeader">
+						<h3>Level Ranges [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<form class="form-inline" role="form">	<!-- POTENTIALLY USELESS FORM -->
+							<br>
+							<label>Item Level</label>
+							<label class="sr-only" for="">Min Level</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Min Level" value="1"></input>&nbsp;-
+							<label class="sr-only" for="">Max Level</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Max Level" value="999"></input>
+						</form>
+						<form class="form-inline" role="form">	<!-- POTENTIALLY USELESS FORM -->
+							<br>
+							<label>Player Level</label>
+							<label class="sr-only" for="">Min Level</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Min Level" value="1"></input>&nbsp;-
+							<label class="sr-only" for="">Max Level</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Max Level" value="90"></input>
+							<br><br>
+						</form>
+					</div>
+				</div>
+				<!-- MISC OPTIONS -->
+				<div class="col-xs-12">
+					<div class="innerOptionHeader">
+						<h3>Misc Options [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<br>
+						<div class="row">
+							<!-- OWNER REALM -->
+							<div class="col-md-4">
+								<label>Owner Realm</label>
+								<div class="checkbox">
+									<label><input type="radio" class="checkAll" checked>ALL REALMS</input></label>
+									<label><input type="checkbox">Realm 1</input></label>
+									<label><input type="checkbox">Realm 2</input></label>
+								</div>
+							</div>
+							<!-- TIME LEFT -->
+							<div class="col-md-4">
+								<label>Time Remaining</label>
+								<div class="checkbox">
+									<label><input type="radio" class="checkAll" checked>ALL TIMES</input></label>
+									<label><input type="checkbox">Short</input></label>
+									<label><input type="checkbox">Long</input></label>
+									<label><input type="checkbox">Very Long</input></label>
+								</div>
+							</div>
+							<!-- ITEM QUANTITY -->
+							<div class="col-md-4">
+								<label>Item Quantity</label>
+								<input type="text" class="form-control numericOnly" placeholder="Numbers Only"></input>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+
+			<!-- COLUMN 4 of 4: ALL SUBTYPE OPTIONS -->
+			<div class="col-md-3 advancedSearchOption">
+				<!-- NO SUBTYPE SELECTED MESSAGE -->
+				<div class="col-xs-12" id="subtypePlaceholder">
+					<div class="innerOptionHeader">
+						<h3>Type Options [-]</h3>
+					</div>
+					<div class="innerOptionBox">
+						<p>To view type options, select a specific item type under the "Item Types" category.</p>
+					</div>
+				</div>
+				<!-- WEAPON SUBTYPES -->
+				<div class="col-xs-12 subtypeOption" id="weaponOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Weapon Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">One-Handed Axes</input></label>
+							<label><input type="checkbox">Two-Handed Axes</input></label>
+							<label><input type="checkbox">Bows</input></label>
+							<label><input type="checkbox">Guns</input></label>
+							<label><input type="checkbox">One-Handed Maces</input></label>
+							<label><input type="checkbox">Two-Handed Maces</input></label>
+							<label><input type="checkbox">Polearms</input></label>
+							<label><input type="checkbox">One-Handed Swords</input></label>
+							<label><input type="checkbox">Two-Handed Swords</input></label>
+							<label><input type="checkbox">Staves</input></label>
+							<label><input type="checkbox">Fist Weapons</input></label>
+							<label><input type="checkbox">Miscellaneous</input></label>
+							<label><input type="checkbox">Daggers</input></label>
+							<label><input type="checkbox">Thrown</input></label>
+							<label><input type="checkbox">Crossbows</input></label>
+							<label><input type="checkbox">Wands</input></label>
+							<label><input type="checkbox">Fishing Poles</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- ARMOR SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="armorOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Armor Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<br><label>Material</label>
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL MATERIALS</input></label>
+							<label><input type="checkbox">Cloth</input></label>
+							<label><input type="checkbox">Leather</input></label>
+							<label><input type="checkbox">Mail</input></label>
+							<label><input type="checkbox">Plate</input></label>
+						</div>
+						<hr><label>Slot (Main)</label>
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL MAIN SLOTS</input></label>
+							<label><input type="checkbox">Head</input></label>
+							<label><input type="checkbox">Shoulders</input></label>
+							<label><input type="checkbox">Chest</input></label>
+							<label><input type="checkbox" id="cloakCheck">Back</input></label>
+							<label><input type="checkbox">Wrist</input></label>
+							<label><input type="checkbox">Hands</input></label>
+							<label><input type="checkbox">Waist</input></label>
+							<label><input type="checkbox">Legs</input></label>
+							<label><input type="checkbox">Feet</input></label>
+						</div>
+						<hr><label>Slot (Misc)</label>
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL MISC SLOTS</input></label>
+							<label><input type="checkbox">Neck</input></label>
+							<label><input type="checkbox">Trinket</input></label>
+							<label><input type="checkbox">Finger</input></label>
+							<label><input type="checkbox">Tabard</input></label>
+							<label><input type="checkbox">Shirt</input></label>
+							<label><input type="checkbox">Shield</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- CONSUMABLE SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="consumableOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Consumable Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">Idk options lol</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- CONTAINER SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="containerOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Container Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">Bag</input></label>
+							<label><input type="checkbox">Herb Bag</input></label>
+							<label><input type="checkbox">Enchanting Bag</input></label>
+							<label><input type="checkbox">Engineering Bag</input></label>
+							<label><input type="checkbox">Gem Bag</input></label>
+							<label><input type="checkbox">Mining Bag</input></label>
+							<label><input type="checkbox">Leatherworking Bag</input></label>
+							<label><input type="checkbox">Inscription Bag</input></label>
+							<label><input type="checkbox">Tackle Box</input></label>
+							<label><input type="checkbox">Cooking Bag</input></label>
+						</div>
+						<form class="form-inline" role="form">	<!-- POTENTIALLY USELESS FORM -->
+							<label>Size</label>
+							<label class="sr-only" for="">Min Size</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Min Size" value="1"></input>&nbsp;-
+							<label class="sr-only" for="">Max Size</label>
+							<input type="text" class="form-control inputField numericOnly" placeholder="Max Size" value="28"></input>
+						</form>
+						<br>
+					</div>
+				</div>
+				<!-- GEM SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="gemOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Gem Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL GEMS</input></label>
+							<label><input type="checkbox">Red</input></label>
+							<label><input type="checkbox">Yellow</input></label>
+							<label><input type="checkbox">Blue</input></label>
+							<label><input type="checkbox">Orange</input></label>
+							<label><input type="checkbox">Purple</input></label>
+							<label><input type="checkbox">Green</input></label>
+							<label><input type="checkbox">Uncolored</input></label>
+							<label><input type="checkbox">Meta</input></label>
+							<label><input type="checkbox"><b>Am I missing any?</b></input></label>
+						</div>
+					</div>
+				</div>
+				<!-- GLYPH SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="glyphOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Glyph Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL CLASSES</input></label>
+							<label><input type="checkbox">Warrior</input></label>
+							<label><input type="checkbox">Paladin</input></label>
+							<label><input type="checkbox">Hunter</input></label>
+							<label><input type="checkbox">Rogue</input></label>
+							<label><input type="checkbox">Priest</input></label>
+							<label><input type="checkbox">Death Knight</input></label>
+							<label><input type="checkbox">Shaman</input></label>
+							<label><input type="checkbox">Mage</input></label>
+							<label><input type="checkbox">Warlock</input></label>
+							<label><input type="checkbox">Monk</input></label>
+							<label><input type="checkbox">Druid</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- RECIPE SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="recipeOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Recipe Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">idk options lol</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- TRADE GOOD SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="tradegoodOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Trade Good Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">Idk options lol</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- BATTLE PET SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="battlepetOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Battle Pet Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">idk options lol</input></label>
+						</div>
+					</div>
+				</div>
+				<!-- MISC SUBTYPE -->
+				<div class="col-xs-12 subtypeOption" id="miscOptions">
+					<div class="innerOptionSubHeader">
+						<h3>Misc Options</h3>
+					</div>
+					<div class="innerOptionSubBox">
+						<div class="checkbox">
+							<label><input type="radio" class="checkAll" checked>ALL TYPES</input></label>
+							<label><input type="checkbox">idk options lol</input></label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button class="btn btn-success" type="button" id="advancedSearchButton">Search</button>
+			<br>
+		</div> <!-- END ADVANCED SEARCH -->
+	</div> <!-- END ALL SEARCH OPTIONS -->
+
+
+	<footer class="col-xs-12">
+		<hr>
+		<p>Made by <a href="#">Jeremy Baker</a>, <a href="#">Salim Chaouqi</a>, <a href="#">Igor Vakulenko</a>, and <a href="#">Ryan Hessen</a>.</p>
+	</footer>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="project.js"></script>
+  </body>
+</html>

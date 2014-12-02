@@ -1,0 +1,175 @@
+/* Media-Specific Styles */
+@media (max-width: 992px) { /*xs and sm screens*/
+    #simpleSearchBar {width:85%}
+    #mainSearchOptions {
+        padding-top:20px;
+        margin-bottom:50px;
+    }
+    #advancedSearch, #specialCategories {margin-left:0px !important; margin-right:-20px !important;}
+    .btn-login {width:100%; margin-top:10px; margin-bottom:10px; display:block;}
+}
+
+@media (min-width: 993px) {
+    .btn-login {width:49.6%; margin:0; margin-bottom:10px;}
+
+    #mainSearchOptions {
+        border-radius:10px;
+        border: 1px solid #666;
+        box-shadow: 5px 5px 10px #666;
+        padding-top:20px;
+        margin-bottom:50px;
+    }
+}
+/* End Media-Specific Styles */
+
+hr {border-color:#666;margin-top:5px;margin-bottom:5px;}
+
+img {display:block;margin-left:auto;margin-right:auto;}
+
+footer {width:100%;text-align:center;}
+
+#navbar {
+    background-color:#c0c0c0;
+    height:45px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-bottom:40px;
+}
+
+#titleImageContainer {
+    margin-bottom:40px;
+    text-align: center;
+}
+#titleImageContainer h1 {font-size: 500%;}
+#titleImageContainer h2 {font-size: 300%;}
+
+#specialCategories, #advancedSearch {
+    position:relative;
+    margin-bottom:50px;
+}
+
+#loginButton {
+    position:absolute;
+    top: 5px;
+    right: 10px;
+}
+
+#advancedSearchButton {margin-top:30px;width:100%;}
+
+#resultsHeader {text-align:center;margin-top:50px;}
+
+.buttonContainer {padding:10px;}
+
+.loginField {margin-top:10px; margin-bottom:10px;}
+
+.advancedSearchOption {padding:10px;}
+.advancedearchOption h3 {font-size:250%;text-align:center;}
+
+.checkbox input[type="radio"],
+.checkbox-inline input[type="radio"] {
+  float: left;
+  margin-left: -20px;
+}
+
+.rowFix {margin-left:0px; margin-right:0px;}    /*this is needed to fix the negative margines caused by Bootstrap's 'row' class*/
+
+.resultHeader {margin-top:40px; text-align:center; display:block;}
+
+.errorReport {margin-bottom:50px; text-align:center;}
+
+.resultsTable {margin-bottom:30px; background-color:#c0c0c0;}
+.resultsTable thead tr th, .resultsTable tbody td {padding:2px;}
+
+.innerOptionHeader {
+    background-color:#297CCF;
+    padding-left:10px;
+    padding-right:10px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border: 1px solid #4877A6;
+    margin-top:20px;
+    margin-bottom:0;
+    text-align:center;
+    color:white;
+}
+.innerOptionBox {
+    padding-left:10px;
+    padding-right:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    border: 1px solid #aaa;
+    margin-top:0;
+    margin-bottom:20px;
+}
+.innerOptionBox label {
+    display:block;
+}
+
+.innerOptionSubHeader {
+    margin-left:-15px;
+    margin-right:-15px;
+    background-color:#3399FF;
+    padding-left:10px;
+    padding-right:10px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border: 1px solid #4877A6;
+    margin-top:20px;
+    margin-bottom:0;
+    text-align:center;
+    color:white;
+}
+.innerOptionSubBox {
+    margin-left:-15px;
+    margin-right:-15px;
+    padding-left:10px;
+    padding-right:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    border: 1px solid #aaa;
+    margin-top:0;
+    margin-bottom:20px;
+}
+
+.validated:focus {
+    color: #468847;
+    border-color: #356635;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #7aba7b;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #7aba7b;
+}
+
+.validationError:focus {
+    color: #b94a48;
+    border-color: #953b39;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+}
+
+.validated {color: #468847; border-color: #356635;}
+
+.validationError {color: #b94a48;border-color: #953b39;}
+
+.inputField {width:40% !important; display:inline;}
+
+.innerOptionSubBox label {display:block;}
+
+.subtypeOption {display:none;}
+
+.resultItemTitle {font-size:150%;}
+
+.aResultSpecial {border:1px solid #333; height:50px; background-color:#c0c0c0; font-size:150%;}
+
+.aResult {border:1px solid #333; height:50px; background-color:#c0c0c0;}
+
+.infoDiv {border-left:1px solid #333;border-right:1px solid #333; height:50px;}
+
+.priceDiv p {margin:0;padding:0;}
+.resultsIcon {width:100%;height:70%;margin-top:15%;}
+
+.poor {color:#9d9d9d;}
+.common {color:black;}
+.uncommon {color:#1ede23;}
+.rare {color:#0f6df8;}
+.epic {color:#a335ee;}
+.legendary {color:#ff6a21;}
+.artifact {color:#e6c15d;}

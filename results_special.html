@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="project.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+    
+  <body>
+    <header id="navbar">
+        <form method="get" action="login.html">
+			<button type="submit" class="btn btn-success" type="button" id="loginButton">Login</button>
+		</form>
+        <div class="col-md-6 col-md-offset-3" id="simpleSearchBar">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Simple text search">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="button">Search</button>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <div class="col-md-6 col-md-offset-3">
+    	<form method="get" action="index.html">
+    		<button class="btn btn-primary btn-block">New Advanced Search</button>
+    	</form>
+    </div>
+
+    <br><br>
+	<h1 id="resultsHeader">Results</h1>
+	<div class="col-md-6 col-md-offset-3" id="resultsBox">
+		<div class="aResultSpecial">
+			<div class="col-xs-8 infoDiv">
+				<a href="#" rel="item=2828">Loading...</a>
+			</div>
+			<div class="col-xs-4 priceDiv">
+				<label>X Pieces</label>
+			</div>
+		</div>
+		<div class="aResultSpecial">
+			<div class="col-xs-8 infoDiv">
+				<a href="#" rel="item=2668">Loading...</a>
+			</div>
+			<div class="col-xs-4 priceDiv">
+				<label>X Pieces</label>
+			</div>
+		</div>
+		<div class="aResultSpecial">
+			<div class="col-xs-8 infoDiv">
+				<a href="#" rel="item=3828">Loading...</a>
+			</div>
+			<div class="col-xs-4 priceDiv">
+				<label>X Pieces</label>
+			</div>
+		</div>
+		<div class="aResultSpecial">
+			<div class="col-xs-8 infoDiv">
+				<a href="#" rel="item=4428">Loading...</a>
+			</div>
+			<div class="col-xs-4 priceDiv">
+				<label>X Pieces</label>
+			</div>
+		</div>
+		<div class="aResultSpecial">
+			<div class="col-xs-8 infoDiv">
+				<a href="#" rel="item=32828">Loading...</a>
+			</div>
+			<div class="col-xs-4 priceDiv">
+				<label>X Pieces</label>
+			</div>
+		</div>
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="project.js"></script>
+    <script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script><script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }</script>
+  </body>
+</html>

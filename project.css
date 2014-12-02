@@ -75,10 +75,17 @@ footer {width:100%;text-align:center;}
 
 .resultHeader {margin-top:40px; text-align:center; display:block;}
 
+.item {background-color:#999;}
+
 .errorReport {margin-bottom:50px; text-align:center;}
 
-.resultsTable {margin-bottom:30px; background-color:#c0c0c0;}
-.resultsTable thead tr th, .resultsTable tbody td {padding:2px;}
+.goldGlyph {font-size:200%; color:#FFCC00;}
+.silverGlyph {font-size:200%; color:#666;}
+.copperGlyph {font-size:200%; color:#87633E;}
+
+.resultsTable {margin-bottom:30px; background-color:#999; border-color:#555;}
+.resultsTable th {background-color:#c0c0c0;}
+.resultsTable thead tr th, .resultsTable tbody td {padding-left:2px; padding-right:2px;}
 
 .innerOptionHeader {
     background-color:#297CCF;

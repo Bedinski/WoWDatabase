@@ -23,12 +23,14 @@
 			<button type="submit" class="btn btn-success" type="button" id="loginButton">Login</button>
 		</form>
 		<div class="col-md-6 col-md-offset-3" id="simpleSearchBar">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Simple text search">
-				<span class="input-group-btn">
-					<button class="btn btn-success" type="button">Search</button>
-				</span>
-			</div>
+			<form action="simple.php" method="get">
+				<div class="input-group">
+					<input type="text" class="form-control" id="simpleTextField" placeholder="Simple text search">
+					<span class="input-group-btn">
+						<button class="btn btn-success" id="simpleTextButton" type="button">Search</button>
+					</span>
+				</div>
+			</form>
 		</div>
 	</header>
 
@@ -95,31 +97,32 @@
 
 		echo "<table border=1 id='resultTable' class='resultsTable tableSorter' align='center'>\n";
 		echo "\t<thead><tr>
-				<th>Auction ID<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Item Data<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Owner Realm<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Bid<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Buyout<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Quantity<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-				<th>Time Left<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
-			</tr></thead><tbody>\n";
+			<th>Auction ID<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Item Data<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Owner<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Owner Realm<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Bid<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Buyout<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Quantity<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+			<th>Time Left<span class='glyphicon glyphicon glyphicon-resize-vertical' aria-hidden='true'></span></th>
+		</tr></thead><tbody>\n";
 		while ($row = oci_fetch_array($statement)) {
-			$bidGold = (int)($row[3]/10000);
-			$bidSilver = (int)(($row[3]-$bidGold*10000)/100);
-			$bidCopper = (int)($row[3]-($bidSilver*100+$bidGold*10000));
-			$buyGold = (int)($row[4]/10000);
-			$buySilver = (int)(($row[4]-$buyGold*10000)/100);
-			$buyCopper = (int)($row[4]-($buySilver*100+$buyGold*10000));
+			$bidGold = (int)($row[4]/10000);
+			$bidSilver = (int)(($row[4]-$bidGold*10000)/100);
+			$bidCopper = (int)($row[4]-($bidSilver*100+$bidGold*10000));
+			$buyGold = (int)($row[3]/10000);
+			$buySilver = (int)(($row[3]-$buyGold*10000)/100);
+			$buyCopper = (int)($row[3]-($buySilver*100+$buyGold*10000));
 
 			echo "\t<tr>
-						<td>" . $row[0] . "</td>
-						<td class='item'><a href='#' rel='item=" . $row[1] . "'>Loading...</a></td>
-						<td>" . $row[2] . "</td>
-						<td>" . $bidGold."<span class='goldGlyph'>&bull;</span>". $bidSilver."<span class='silverGlyph'>&bull;</span>". $bidCopper."<span class='copperGlyph'>&bull;</span>" . "</td>
-						<td>" . $buyGold."<span class='goldGlyph'>&bull;</span>". $buySilver."<span class='silverGlyph'>&bull;</span>". $buyCopper."<span class='copperGlyph'>&bull;</span>" . "</td>
-						<td>" . $row[5] . "</td>
-						<td>" . $row[6] . "</td>
-					</tr>\n";
+				<td>" . $row[0] . "</td>
+				<td class='item'><a href='#' rel='item=" . $row[1] . "'>Loading...</a></td>
+				<td>" . $row[2] . "</td>
+				<td>" . $bidGold."<span class='goldGlyph'>&bull;</span>". $bidSilver."<span class='silverGlyph'>&bull;</span>". $bidCopper."<span class='copperGlyph'>&bull;</span>" . "</td>
+				<td>" . $buyGold."<span class='goldGlyph'>&bull;</span>". $buySilver."<span class='silverGlyph'>&bull;</span>". $buyCopper."<span class='copperGlyph'>&bull;</span>" . "</td>
+				<td>" . $row[5] . "</td>
+				<td>" . $row[6] . "</td>
+			</tr>\n";
 		}
 		echo "</tbody></table>\n";
 

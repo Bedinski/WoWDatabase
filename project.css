@@ -158,6 +158,8 @@ footer {width:100%;text-align:center;}
 
 .inputField {width:40% !important; display:inline;}
 
+.queryError {color:#f00; text-align:center;}
+
 .innerOptionSubBox label {display:block;}
 
 .subtypeOption {display:none;}

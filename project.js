@@ -126,7 +126,7 @@ $("label").mouseup(function(){
 
 
 
-//validate user input in Pricing Range Min field
+//validate user input in Pricing Range fields
 $("#priceRangeMin,#priceRangeMax").focusout(function() {
 	var input = this.value;
 

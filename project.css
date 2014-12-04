@@ -56,6 +56,8 @@ footer {width:100%;text-align:center;}
 
 #advancedSearchButton {margin-top:30px;width:100%;}
 
+#priceTypeRadios {margin-left:-20px;}
+
 #resultsHeader {text-align:center;margin-top:50px;}
 
 .buttonContainer {padding:10px;}

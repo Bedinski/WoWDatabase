@@ -19,9 +19,9 @@
 
   <body>
 	<header id="navbar">
-		<form method="get" action="login.html">
+		<!-- <form method="get" action="login.php">
 			<button type="submit" class="btn btn-success" type="button" id="loginButton">Login</button>
-		</form>
+		</form> -->
 		<div class="col-md-6 col-md-offset-3" id="simpleSearchBar">
 			<form action="simple.php" method="get">
 				<div class="input-group">
@@ -153,11 +153,13 @@
 						<div class="innerOptionBox">
 							<p>Enter monetary values as XgYsZc, where X=amount of gold, Y=amount of silver, and Z=amount of copper. </p>
 							<p>Example: 10 gold, 20 silver, and 5 copper is 10g20s5c. 44 gold and 3 copper would be 44g0s3c.</p>
-							<div class="radio">
-								<label for="priceType">Auction Type</label>
-								<label><input name="priceType" style="display:inline;" type="radio" value="" class="default" checked>Both</input></label>
-								<label><input name="priceType" type="radio" value="">Bid Only</input></label>
-								<label><input name="priceType" type="radio" value="">Buyout Only</input></label>
+							<div class="radio" id="priceTypeRadios">
+								<label for="priceType"><b>Apply constraint to which auction type?</b></label>
+								<div class="form-inline">
+									<label class="radio"><input name="priceType" type="radio" value="both" class="default" checked>Both</input></label>
+									<label class="radio"><input name="priceType" type="radio" value="auction">Bid Only</input></label>
+									<label class="radio"><input name="priceType" type="radio" value="buyout">Buyout Only</input></label>
+								</div>
 							</div>
 							<div class="form-inline">
 								<label class="sr-only" for="minPrice">Min Price</label>
@@ -192,21 +194,21 @@
 							<h3>Level Ranges [-]</h3>
 						</div>
 						<div class="innerOptionBox">
-							<div class="form-inline" role="form">	<!-- POTENTIALLY USELESS FORM -->
+							<div class="form-inline">
 								<br>
 								<label>Item Level</label>
-								<label class="sr-only" for="">Min Level</label>
-								<input type="text" class="form-control inputField numericOnly" placeholder="Min Level" value="1"></input>&nbsp;-
-								<label class="sr-only" for="">Max Level</label>
-								<input type="text" class="form-control inputField numericOnly" placeholder="Max Level" value="999"></input>
+								<label class="sr-only" for="minItemLevel">Min Item Level</label>
+								<input type="text" class="form-control inputField numericOnly" name="minItemLevel" placeholder="Min Level" value="1"></input>&nbsp;-
+								<label class="sr-only" for="maxItemLevel">Max Item Level</label>
+								<input type="text" class="form-control inputField numericOnly" name="maxItemLevel" placeholder="Max Level" value="999?"></input>
 							</div>
-							<div class="form-inline">	<!-- POTENTIALLY USELESS FORM -->
+							<div class="form-inline">
 								<br>
 								<label>Player Level</label>
-								<label class="sr-only" for="">Min Level</label>
-								<input type="text" class="form-control inputField numericOnly" placeholder="Min Level" value="1"></input>&nbsp;-
-								<label class="sr-only" for="">Max Level</label>
-								<input type="text" class="form-control inputField numericOnly" placeholder="Max Level" value="90"></input>
+								<label class="sr-only" for="minPlayerLevel">Min Player Level</label>
+								<input type="text" class="form-control inputField numericOnly" name="minPlayerLevel" placeholder="Min Level" value="1"></input>&nbsp;-
+								<label class="sr-only" for="maxPlayerLevel">Max Player Level</label>
+								<input type="text" class="form-control inputField numericOnly" name="maxPlayerLevel" placeholder="Max Level" value="90"></input>
 								<br><br>
 							</div>
 						</div>
@@ -223,25 +225,25 @@
 								<div class="col-md-4">
 									<label>Owner Realm</label>
 									<div class="checkbox">
-										<label><input type="radio" class="checkAll" checked>ALL REALMS</input></label>
-										<label><input type="checkbox">Realm 1</input></label>
-										<label><input type="checkbox">Realm 2</input></label>
+										<label><input name="ownerRealm" value="all" type="radio" class="checkAll" checked>ALL REALMS</input></label>
+										<label><input name="realmOne" value="true" type="checkbox">Realm 1</input></label>
+										<label><input name="realmTwo" value="true" type="checkbox">Realm 2</input></label>
 									</div>
 								</div>
 								<!-- TIME LEFT -->
 								<div class="col-md-4">
 									<label>Time Remaining</label>
 									<div class="checkbox">
-										<label><input type="radio" class="checkAll" checked>ALL TIMES</input></label>
-										<label><input type="checkbox">Short</input></label>
-										<label><input type="checkbox">Long</input></label>
-										<label><input type="checkbox">Very Long</input></label>
+										<label><input name="timeLeft" value="all" type="radio" class="checkAll" checked>ALL TIMES</input></label>
+										<label><input name="short" value="true" type="checkbox">Short</input></label>
+										<label><input name="long" value="true" type="checkbox">Long</input></label>
+										<label><input name="verylong" value="true" type="checkbox">Very Long</input></label>
 									</div>
 								</div>
 								<!-- ITEM QUANTITY -->
 								<div class="col-md-4">
-									<label>Item Quantity</label>
-									<input type="text" class="form-control numericOnly" placeholder="Numbers Only"></input>
+									<label for="quantity">Item Quantity</label>
+									<input type="text" class="form-control numericOnly" name="quantity" placeholder="Numbers Only" value="1"></input>
 								</div>
 							</div>
 							<br>

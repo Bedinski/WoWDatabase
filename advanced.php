@@ -121,7 +121,7 @@
 		$parseCopper = preg_replace("/c/","",$parseCopper);
 		$maxPriceP = $parseGold*$gold + $parseSilver*$silver + $parseCopper;
 	}
-
+	
 
 	//===================================
 	//======== FILTER BY QUALITY ========
